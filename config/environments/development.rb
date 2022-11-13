@@ -50,15 +50,15 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
-  config.middleware.use Rack::Cors do
-    allow do
-      origins ENV['CORS_ALLOWED_ORIGINS']
-      resource "*",
-               headers: :any,
-               methods: [:get, :post, :put, :patch, :delete],
-               expose: []
-    end
-  end
+  # config.middleware.use Rack::Cors do
+  #   allow do
+  #     origins ENV['CORS_ALLOWED_ORIGINS']
+  #     resource "*",
+  #              headers: :any,
+  #              methods: [:get, :post, :put, :patch, :delete],
+  #              expose: []
+  #   end
+  # end
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
