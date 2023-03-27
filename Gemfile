@@ -29,11 +29,21 @@ gem 'graphql'
 
 gem 'jwt'
 
+gem 'dotenv-rails'
+
+gem 'rack-cors'
+
+gem 'redis'
+gem 'redis-actionpack'
+
+gem 'rails_same_site_cookie'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'annotate'
   gem 'byebug'
   gem 'factory_bot_rails'
+  gem 'graphiql-rails'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rubocop', require: false
