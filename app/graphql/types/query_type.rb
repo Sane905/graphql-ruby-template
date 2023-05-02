@@ -8,10 +8,21 @@ module Types
     # They will be entry points for queries on your schema.
 
     # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+
+    field :users, [Types::UserType], null: false
+    def users
+      User.all
+    end
+
+    field :connection_users, Types::UserType.connection_type, null: false
+    def connection_users
+      User.all
+    end
+
+    private
+
+    def current_account
+      context[:current_account]
     end
   end
 end

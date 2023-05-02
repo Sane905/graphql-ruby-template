@@ -15,6 +15,8 @@ require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
+require "sprockets/railtie"
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -28,6 +30,15 @@ module MusicCommunicationApp
 
     config.generators do |g|
       g.test_framework :rspec, view_specs: false, helper_specs: false, fixture: false
+    end
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "*"
+        resource "*",
+          headers: :any,
+          methods: [:get, :post, :options, :head]
+      end
     end
 
     # Configuration for the application, engines, and railties goes here.
