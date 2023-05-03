@@ -3,7 +3,10 @@ module Mutations
    type Boolean
 
    def resolve
-    delete_session
+    binding.pry
+    require_patient_account_login!
+
+    context[:session][:session_uid] = nil
     true
    end
   end

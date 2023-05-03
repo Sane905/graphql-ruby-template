@@ -50,8 +50,8 @@ input SignInInput {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
-  idToken: String!
-  refreshToken: String!
+  email: String!
+  password: String!
 }
 
 """
@@ -62,8 +62,8 @@ input SignUpInput {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
-  idToken: String!
-  refreshToken: String!
+  email: String!
+  password: String!
 }
 
 type User {

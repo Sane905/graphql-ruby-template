@@ -3,12 +3,20 @@ module Mutations
     null false
     type Types::UserType
 
-    argument :id_token, String, required: true
-    argument :refresh_token, String, required: true
+    argument :email, String, required: true
+    argument :password, String, required: true
 
-    def resolve(id_token:, refresh_token:)
-      setting_session(id_token, refresh_token)
-      user = find_form_id_token!
+    def resolve(email:, password:)
+      context[:session][:session_uid] = nil
+
+      begin
+        user = User.authenticate(email, password)
+      rescue ActiveRecord::RecordNotFound => e
+        raise GraphQL::ExecutionError.new(e.message, extensions: { code: 404 })
+      end
+
+      context[:session][:session_uid] = user.uid
+
       user
     end
   end

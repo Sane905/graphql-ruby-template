@@ -238,7 +238,7 @@
               "deprecationReason": null
             },
             {
-              "name": "idToken",
+              "name": "email",
               "description": null,
               "type": {
                 "kind": "NON_NULL",
@@ -254,7 +254,7 @@
               "deprecationReason": null
             },
             {
-              "name": "refreshToken",
+              "name": "password",
               "description": null,
               "type": {
                 "kind": "NON_NULL",
@@ -293,7 +293,7 @@
               "deprecationReason": null
             },
             {
-              "name": "idToken",
+              "name": "email",
               "description": null,
               "type": {
                 "kind": "NON_NULL",
@@ -309,7 +309,7 @@
               "deprecationReason": null
             },
             {
-              "name": "refreshToken",
+              "name": "password",
               "description": null,
               "type": {
                 "kind": "NON_NULL",

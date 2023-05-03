@@ -3,12 +3,19 @@ module Mutations
     null false
     type Types::UserType
 
-    argument :id_token, String, required: true
-    argument :refresh_token, String, required: true
+    argument :email, String, required: true
+    argument :password, String, required: true
 
-    def resolve(id_token:, refresh_token:)
-      setting_session(id_token, refresh_token)
-      create_form_id_token!
+    def resolve(email:, password:)
+      if user = User.find_by(email: email)
+        user.password = password
+        user.save!
+      else
+        user = User.create!(email: email, password: password)
+      end
+      context[:session][:session_uid] = user.uid
+
+      user
     end
   end
 end

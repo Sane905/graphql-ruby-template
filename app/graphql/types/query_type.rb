@@ -9,16 +9,6 @@ module Types
 
     # TODO: remove me
 
-    field :users, [Types::UserType], null: false
-    def users
-      User.all
-    end
-
-    field :connection_users, Types::UserType.connection_type, null: false
-    def connection_users
-      User.all
-    end
-
     private
 
     def current_account

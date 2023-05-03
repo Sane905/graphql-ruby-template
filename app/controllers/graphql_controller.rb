@@ -11,7 +11,9 @@ class GraphqlController < ApplicationController
     
 
     context = {
-      session: session
+      session: session,
+      cookies: cookies,
+      current_user: current_user
     }
     result = MusicCommunicationAppSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
@@ -23,7 +25,8 @@ class GraphqlController < ApplicationController
   private
 
   def current_user
-    @current_user ||= find_form_id_token!
+    return nil unless session[:session_uid]
+    User.find_by(uid: session[:session_uid])
   end 
 
   # Handle variables in form data, JSON body, or a blank value
