@@ -70,6 +70,7 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
+    bcrypt (3.1.18)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -254,6 +255,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-session_store
   annotate
+  bcrypt
   bootsnap (>= 1.4.4)
   byebug
   dotenv-rails
