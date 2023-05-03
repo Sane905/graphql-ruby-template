@@ -1,2 +1,2 @@
-# music-com-api-server
-音楽マッチングアプリのapi サーバー
+# graphql-ruby-template
+graphql-rubyのテンプレート
