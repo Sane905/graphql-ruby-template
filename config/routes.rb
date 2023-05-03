@@ -9,8 +9,4 @@ Rails.application.routes.draw do
 
   post "/graphql", to: "graphql#execute"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resource :users, only: [] do
-    post :lock_transaction
-    post :not_lock_transaction
-  end
 end
