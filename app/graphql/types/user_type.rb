@@ -9,9 +9,5 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
 
-    field :posts, [Types::PostType], null: false
-    def posts
-      object.posts
-    end
   end
 end
