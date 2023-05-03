@@ -11,7 +11,6 @@ class GraphqlController < ApplicationController
     
 
     context = {
-      current_user: current_user,
       session: session
     }
     result = MusicCommunicationAppSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
