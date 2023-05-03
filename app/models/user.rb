@@ -4,9 +4,6 @@ class User < ApplicationRecord
     self.uid = Digest::UUID.uuid_v4.tr('-', '')
   end
 
-  has_many :posts,
-           foreign_key: :user_uid,
-           primary_key: :uid
 end
 
 # == Schema Information
