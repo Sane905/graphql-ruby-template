@@ -34,12 +34,21 @@ module MusicCommunicationApp
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins "*"
+        origins "http://localhost:3000"
         resource "*",
           headers: :any,
-          methods: [:get, :post, :options, :head]
+          methods: [:get, :post, :put, :delete, :patch, :options, :head],
+          credentials: true
       end
     end
+
+    config.api_only = true
+    config.session_store :cookie_store, key: '_mcn_session', expire_after: 20.seconds
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore  # 追加する
+    config.middleware.use config.session_store, config.session_options
+
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -52,6 +61,5 @@ module MusicCommunicationApp
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    # config.api_only = true
   end
 end

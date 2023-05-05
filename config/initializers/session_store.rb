@@ -7,5 +7,5 @@
 
 #   key: "_app_session"
 # Rails.application.config.session_store :active_record_store, key: '_mcn_session'
-Rails.application.config.session_store :cookie_store, key: '_mcn_session'
+# Rails.application.config.session_store :cookie_store, expire_after: 30.minutes, key: "_mcn_session"
 
