@@ -17,7 +17,7 @@ module Mutations
       context[:session]
     end
 
-    def require_patient_account_login!
+    def require_user_login!
       raise GraphQL::ExecutionError.new('ログインが必要です。', extensions: { code: 404 }) if current_user.blank?
     end
   end

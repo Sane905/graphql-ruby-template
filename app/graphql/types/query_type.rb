@@ -9,10 +9,21 @@ module Types
 
     # TODO: remove me
 
+    field :user, Types::UserType, null: false
+    def user
+      require_user_login!
+
+      current_user
+    end
+
     private
 
-    def current_account
-      context[:current_account]
+    def current_user
+      context[:current_user]
+    end
+
+    def require_user_login!
+      raise GraphQL::ExecutionError.new('ログインが必要です。', extensions: { code: 404 }) if current_user.blank?
     end
   end
 end
