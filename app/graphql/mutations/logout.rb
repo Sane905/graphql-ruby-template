@@ -3,7 +3,7 @@ module Mutations
    type Boolean
 
    def resolve
-    require_patient_account_login!
+    require_user_login!
 
     context[:session][:session_uid] = nil
     true
