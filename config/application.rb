@@ -43,7 +43,7 @@ module MusicCommunicationApp
     end
 
     config.api_only = true
-    config.session_store :cookie_store, key: '_mcn_session', expire_after: 20.seconds
+    config.session_store :cookie_store, key: '_mcn_session'
 
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore  # 追加する
