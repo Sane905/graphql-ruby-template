@@ -7,6 +7,14 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
+  has_many :auth_sessions,
+           foreign_key: :user_uid,
+           primary_key: :uid
+
+  has_many :posts,
+           foreign_key: :user_uid,
+           primary_key: :uid,
+           dependent: :destroy
 
   def self.authenticate(email, password)
     user = User.find_by!(email: email)

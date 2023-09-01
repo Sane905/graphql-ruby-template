@@ -17,6 +17,10 @@ module Mutations
       context[:session]
     end
 
+    # def cookies
+    #   context[:cookies]
+    # end
+
     def require_user_login!
       raise GraphQL::ExecutionError.new('ログインが必要です。', extensions: { code: 404 }) if current_user.blank?
     end

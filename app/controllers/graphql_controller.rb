@@ -25,8 +25,18 @@ class GraphqlController < ApplicationController
   private
 
   def current_user
-    return nil unless session[:session_uid]
-    User.find_by(uid: session[:session_uid])
+    # return nil unless session[:session_uid]
+    # User.find_by(uid: session[:session_uid])
+    return if cookies[:user_uid].blank? || cookies[:token].blank?
+
+    user = User.joins(:auth_sessions).where(uid: cookies[:user_uid])
+      .merge(AuthSession.by_token(cookies[:token]).within_expiration_date).first
+    return if user.blank?
+
+    auth_session = user.auth_sessions.by_token(cookies[:token]).first
+    auth_session.save_reseted_last_accessed_at
+
+    user
   end 
 
   # Handle variables in form data, JSON body, or a blank value

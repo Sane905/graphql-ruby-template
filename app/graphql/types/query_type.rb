@@ -16,6 +16,14 @@ module Types
       current_user
     end
 
+    field :post_search, Types::PostType.connection_type, null: false
+    def post_search
+       posts = Post.order(created_at: :desc)
+
+       posts
+    end
+
+
     private
 
     def current_user
